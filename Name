@@ -1,0 +1,12 @@
+class CustomList:
+    def __init__(self, data):
+        self.data = data
+
+    def __getitem__(self, key):
+        if isinstance(key, slice):
+            return [self.data[i] for i in range(*key.indices(len(self.data)))]
+        else:
+            return self.data[key]
+
+custom_list = CustomList([1, 2, 3, 4, 5])
+print(custom_list[1:4])
